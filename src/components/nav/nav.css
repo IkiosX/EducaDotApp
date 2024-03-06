@@ -1,0 +1,37 @@
+/* Alternative Theme Styles Adjusted for 1080p Resolution */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px; /* Increased padding for better spacing */
+    height: 80px; /* Increase height for a more prominent navbar */
+    background-color: #347a87;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    color: white;
+    font-size: 1.1em; /* Optionally adjust the font size for better legibility */
+  }
+  
+  .navbar .logo img {
+    height: 70px; /* Increased logo size for better visibility and proportion */
+    transition: transform 0.3s ease;
+  }
+  
+  .navbar .logo img:hover {
+    transform: scale(1.05); /* Subtle grow effect */
+  }
+  
+  .navbar .nav-links a {
+    color: white;
+    text-decoration: none;
+    margin: 0 20px; /* Adjust margin for better spacing */
+    padding: 10px 15px; /* Increased padding for larger clickable area */
+    border-radius: 20px; /* Adjusted for aesthetic consistency */
+    transition: background-color 0.3s, transform 0.2s, padding 0.2s;
+  }
+  
+  .navbar .nav-links a:hover {
+    background-color: #499aa6;
+    transform: translateY(-2px);
+    padding: 10px 15px; /* Maintain consistent padding on hover */
+  }
+  
