@@ -1,18 +1,21 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './nav.css';
 
 const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="logo">
-        <a href="/">
+        {/* Keep the original structure but replace <a> with <Link> */}
+        <Link to="/">
           <img src="logo.png" alt="Logo" />
-        </a>
+        </Link>
       </div>
       <div className="nav-links">
-        <a href="/home">Home</a>
-        <a href="/register">Register</a>
-        <a href="/login">Log In</a>
+        {/* Replace all <a> tags with <Link> for SPA behavior */}
+        <Link to="/">Home</Link>
+        <Link to="/register">Register</Link>
+        <Link to="/login">Log In</Link>
       </div>
     </nav>
   );
