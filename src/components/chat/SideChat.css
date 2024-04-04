@@ -1,0 +1,74 @@
+.chat-box {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    width: 350px;
+    background-color: #FFFFFF;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+    overflow: hidden;
+    max-height: 60px;
+}
+
+.chat-box.expanded {
+    max-height: 500px;
+}
+
+.chat-header {
+    background-color: #7995B2;
+    color: #FFFFFF;
+    padding: 10px 15px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.messages-container {
+    padding: 10px;
+    height: 350px;
+    overflow-y: auto;
+}
+
+.message {
+    background-color: #f1f1f1;
+    padding: 8px 12px;
+    margin-bottom: 10px;
+    border-radius: 15px;
+    max-width: 80%;
+    word-wrap: break-word;
+}
+
+.my-message {
+    background-color: #DCF8C6;
+    margin-left: auto;
+}
+
+.message-input-container {
+    padding: 10px;
+    border-top: 1px solid #ccc;
+}
+
+.message-input {
+    width: calc(100% - 90px);
+    padding: 10px;
+    margin-right: 10px;
+    border-radius: 15px;
+    border: 1px solid #ccc;
+}
+
+.send-button {
+    padding: 10px 15px;
+    background-color: #7995B2;
+    color: white;
+    border: none;
+    border-radius: 15px;
+}
+
+.toggle-chat {
+    /* Add styles for your toggle icon here */
+}
+

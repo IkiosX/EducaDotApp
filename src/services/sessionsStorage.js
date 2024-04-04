@@ -1,4 +1,4 @@
-import { auth } from './firebase-config'; // Adjust the import path based on your structure
+import { auth } from './firebase-config';
 import { onAuthStateChanged } from 'firebase/auth';
 
 export const setSession = (user) => {
@@ -23,4 +23,14 @@ export const subscribeToAuthChanges = (handleAuthChange) => {
         }
         handleAuthChange(user);
     });
+};
+
+// Function to log out the user
+export const handleLogout = async () => {
+    try {
+        await auth.signOut();
+        console.log("User signed out.");
+    } catch (error) {
+        console.error('Error signing out:', error);
+    }
 };

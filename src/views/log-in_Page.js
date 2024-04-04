@@ -41,7 +41,7 @@ const LogIn = () => {
                 <input
                     type="password"
                     placeholder="Password"
-                    className="login-input"  // Ensuring your styling is applied
+                    className="login-input"  
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                 />

@@ -1,7 +1,9 @@
 // Profile.js
 import React, { useContext } from 'react';
 import { UserContext } from '../components/private_route/user_access_state';
-import './Profile.css'; // Updated CSS for animations and modern UI
+import { handleLogout } from '../services/sessionsStorage';
+import SideChat from '../components/chat/SideChat'
+import './Profile.css';
 
 const Profile = () => {
     const { user } = useContext(UserContext);
@@ -13,8 +15,9 @@ const Profile = () => {
     return (
         <div className="profile-container">
             <nav className="profile-nav">
-                <a href="/home" className="nav-item">Home</a>
+                <a href="/" className="nav-item">Home</a>
                 {/* Additional navigation items */}
+                <button onClick={handleLogout} className="nav-item logout-button">Logout</button>
             </nav>
 
             <div className="profile-content">
@@ -44,8 +47,9 @@ const Profile = () => {
             </div>
 
             <footer className="profile-footer">
-                <span>Your Application's Name © {new Date().getFullYear()}</span>
+                <span>EducaApp © {new Date().getFullYear()}</span>
             </footer>
+            <SideChat />
         </div>
     );
 };

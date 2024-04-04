@@ -9,7 +9,7 @@ const HomePage = () => {
         <div className="home-page-container">
             <Navbar />
             <div className="home-main-content">
-                <SearchBar />
+                <SearchBar class />
             </div>
             <Footer />
         </div>
