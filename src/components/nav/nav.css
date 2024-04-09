@@ -5,7 +5,7 @@
   align-items: center;
   padding: 0 30px;
   height: 80px;
-  background-color: #347a87;
+  background-color: red;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   color: white;
   font-size: 1.1em;
@@ -37,42 +37,57 @@
 /* Media query for tablet devices */
 @media (max-width: 768px) {
   .navbar {
-    padding: 0 20px; /* Slightly reduce padding */
-    height: 60px; /* Reduce height */
+    padding: 0 20px;
+    /* Slightly reduce padding */
+    height: 60px;
+    /* Reduce height */
   }
 
   .navbar .logo img {
-    height: 50px; /* Reduce logo size */
+    height: 50px;
+    /* Reduce logo size */
   }
 
   .navbar .nav-links a {
-    margin: 0 10px; /* Reduce margin */
-    padding: 8px 12px; /* Slightly reduce padding */
+    margin: 0 10px;
+    /* Reduce margin */
+    padding: 8px 12px;
+    /* Slightly reduce padding */
   }
 }
 
 /* Media query for mobile devices */
 @media (max-width: 480px) {
   .navbar {
-    flex-direction: column; /* Stack items vertically */
-    padding: 10px; /* Reduce padding */
-    height: auto; /* Adjust height automatically */
+    flex-direction: column;
+    /* Stack items vertically */
+    padding: 10px;
+    /* Reduce padding */
+    height: auto;
+    /* Adjust height automatically */
   }
 
   .navbar .logo {
-    margin-bottom: 10px; /* Add space between logo and navigation links */
+    margin-bottom: 10px;
+    /* Add space between logo and navigation links */
   }
 
   .navbar .nav-links {
     display: flex;
-    flex-direction: column; /* Stack links vertically */
-    align-items: center; /* Center links */
+    flex-direction: column;
+    /* Stack links vertically */
+    align-items: center;
+    /* Center links */
   }
 
   .navbar .nav-links a {
-    display: block; /* Ensure full-width links */
-    margin: 5px 0; /* Add vertical margin */
-    width: 100%; /* Full-width links for easier touch targets */
-    text-align: center; /* Center text */
+    display: block;
+    /* Ensure full-width links */
+    margin: 5px 0;
+    /* Add vertical margin */
+    width: 100%;
+    /* Full-width links for easier touch targets */
+    text-align: center;
+    /* Center text */
   }
 }
