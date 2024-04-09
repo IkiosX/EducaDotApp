@@ -28,7 +28,7 @@ const SideChat = () => {
 
         // Clean up the subscription on unmount
         return () => unsubscribe();
-    }, []); // Empty dependency array means this effect runs once on mount
+    }, [chatRoomId]); // Empty dependency array means this effect runs once on mount
 
     const toggleChat = () => setIsExpanded(!isExpanded);
 
