@@ -9,6 +9,8 @@ import './Profile.css';
 const Profile = () => {
     const { user } = useContext(UserContext);
     const fileInputRef = useRef(null);
+    const profileInputRef = useRef(null);
+    const [profilePic, setProfilePic] = useState('');
     const [files, setFiles] = useState([]);
 
     useEffect(() => {
@@ -33,14 +35,29 @@ const Profile = () => {
                 const snapshot = await uploadBytes(storageRef, file);
                 const downloadUrl = await getDownloadURL(snapshot.ref);
                 console.log('File available at', downloadUrl);
-                setFiles(prev => [...prev, downloadUrl]); // Update file list
+                setFiles(prev => [...prev, downloadUrl]);
             } catch (error) {
                 console.error('Error uploading file:', error);
             }
         }
     };
 
-    const handleButtonClick = () => {
+    const handleProfilePicChange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                setProfilePic(reader.result);
+            };
+            reader.readAsDataURL(file);
+        }
+    };
+
+    const triggerProfileUpload = () => {
+        profileInputRef.current.click();
+    };
+
+    const triggerFileUpload = () => {
         fileInputRef.current.click();
     };
 
@@ -60,16 +77,22 @@ const Profile = () => {
                     <h1 className="greeting">Welcome, {user.email}!</h1>
                     <div className="profile-pic-upload">
                         <div className="profile-pic-container">
-                            {/* Profile picture placeholder */}
+                            {profilePic && <img src={profilePic} alt="Profile" />}
                         </div>
-                        <button className="upload-btn">Upload Picture</button>
+                        <button className="upload-btn" onClick={triggerProfileUpload}>Upload Picture</button>
+                        <input
+                            type="file"
+                            ref={profileInputRef}
+                            onChange={handleProfilePicChange}
+                            style={{ display: 'none' }}
+                        />
                     </div>
                 </div>
 
                 <div className="files-section">
-                <div className="files-header">
+                    <div className="files-header">
                         <h2>Your Files</h2>
-                        <button className="fab" onClick={handleButtonClick}>+</button>
+                        <button className="fab" onClick={triggerFileUpload}>+</button>
                     </div>
                     <div className="files-list">
                         {files.map((fileUrl, index) => (
@@ -78,15 +101,13 @@ const Profile = () => {
                             </div>
                         ))}
                     </div>
+                    <input
+                        type="file"
+                        ref={fileInputRef}
+                        onChange={handleFileChange}
+                        style={{ display: 'none' }}
+                    />
                 </div>
-
-                <input
-                    type="file"
-                    ref={fileInputRef}
-                    onChange={handleFileChange}
-                    style={{ display: 'none' }}
-                />
-                
             </div>
 
             <footer className="profile-footer">
