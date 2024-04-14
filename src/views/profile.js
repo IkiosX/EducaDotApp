@@ -67,7 +67,7 @@ const Profile = () => {
                 </div>
 
                 <div className="files-section">
-                    <div className="files-header">
+                <div className="files-header">
                         <h2>Your Files</h2>
                         <button className="fab" onClick={handleButtonClick}>+</button>
                     </div>
