@@ -1,12 +1,48 @@
-// Profile.js
-import React, { useContext } from 'react';
+import React, { useContext, useRef, useState, useEffect } from 'react';
 import { UserContext } from '../components/private_route/user_access_state';
 import { handleLogout } from '../services/sessionsStorage';
-import SideChat from '../components/chat/SideChat'
+import { ref, uploadBytes, getDownloadURL, listAll } from "firebase/storage";
+import { storage } from '../services/firebase-config';
+import SideChat from '../components/chat/SideChat';
 import './Profile.css';
 
 const Profile = () => {
     const { user } = useContext(UserContext);
+    const fileInputRef = useRef(null);
+    const [files, setFiles] = useState([]);
+
+    useEffect(() => {
+        if (user) {
+            const filesRef = ref(storage, `user-files/${user.uid}/`);
+            listAll(filesRef)
+                .then(async (res) => {
+                    const fileUrls = await Promise.all(res.items.map(item => getDownloadURL(item)));
+                    setFiles(fileUrls);
+                })
+                .catch(error => {
+                    console.error("Error fetching files:", error);
+                });
+        }
+    }, [user]);
+
+    const handleFileChange = async (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            const storageRef = ref(storage, `user-files/${user.uid}/${file.name}`);
+            try {
+                const snapshot = await uploadBytes(storageRef, file);
+                const downloadUrl = await getDownloadURL(snapshot.ref);
+                console.log('File available at', downloadUrl);
+                setFiles(prev => [...prev, downloadUrl]); // Update file list
+            } catch (error) {
+                console.error('Error uploading file:', error);
+            }
+        }
+    };
+
+    const handleButtonClick = () => {
+        fileInputRef.current.click();
+    };
 
     if (!user) {
         return <div className="login-prompt">Please log in.</div>;
@@ -16,12 +52,10 @@ const Profile = () => {
         <div className="profile-container">
             <nav className="profile-nav">
                 <a href="/" className="nav-item">Home</a>
-                {/* Additional navigation items */}
                 <button onClick={handleLogout} className="nav-item logout-button">Logout</button>
             </nav>
 
             <div className="profile-content">
-                {/* User greeting and profile card */}
                 <div className="profile-card">
                     <h1 className="greeting">Welcome, {user.email}!</h1>
                     <div className="profile-pic-upload">
@@ -32,18 +66,27 @@ const Profile = () => {
                     </div>
                 </div>
 
-                {/* File cards section with hover effects */}
                 <div className="files-section">
-                    <h2>Your Files</h2>
+                    <div className="files-header">
+                        <h2>Your Files</h2>
+                        <button className="fab" onClick={handleButtonClick}>+</button>
+                    </div>
                     <div className="files-list">
-                        <div className="file-card">File 1</div>
-                        <div className="file-card">File 2</div>
-                        {/* Additional file cards */}
+                        {files.map((fileUrl, index) => (
+                            <div key={index} className="file-card">
+                                <a href={fileUrl} target="_blank" rel="noopener noreferrer">File {index + 1}</a>
+                            </div>
+                        ))}
                     </div>
                 </div>
 
-                {/* Animated floating action button */}
-                <button className="fab">+</button>
+                <input
+                    type="file"
+                    ref={fileInputRef}
+                    onChange={handleFileChange}
+                    style={{ display: 'none' }}
+                />
+                
             </div>
 
             <footer className="profile-footer">
