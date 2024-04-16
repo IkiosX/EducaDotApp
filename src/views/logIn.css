@@ -37,7 +37,9 @@
 }
 
 .login-form input,
-.login-form button {
+.login-form button,
+.login-form .back-button {
+  /* Added .back-button to apply same styles */
   padding: 15px;
   border-radius: 5px;
   border: 1px solid #789abc;
@@ -51,13 +53,21 @@
   font-size: 16px;
 }
 
-.login-form button {
+.login-form button,
+.login-form .back-button {
+  /* Added .back-button to apply same styles */
   background-color: #499aa6;
   /* Button color matched with navbar accent */
   color: white;
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
+}
+
+/* Additional hover effect for the back button if needed */
+.login-form .back-button:hover {
+  background-color: #347a87;
+  /* Matching the hover state of the main button */
 }
 
 .login-form button:hover {
@@ -78,4 +88,27 @@
   .login-form {
     padding: 20px 15px;
   }
+}
+
+.login-form .back-button,
+.login-form .login-button {
+  padding: 15px;
+  border-radius: 5px;
+  border: 1px solid #789abc;
+  background-color: #499aa6;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  flex: 1; /* Allows the buttons to grow and fill the space equally */
+  margin: 10px; /* Provides spacing between the buttons */
+}
+
+/* Hover effects for both buttons */
+.login-form .back-button:hover,
+.login-form .login-button:hover {
+  background-color: #347a87;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }

@@ -1,4 +1,5 @@
 import React, { useContext, useRef, useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../components/private_route/user_access_state';
 import { handleLogout } from '../services/sessionsStorage';
 import { ref, uploadBytes, getDownloadURL, listAll } from "firebase/storage";
@@ -12,7 +13,7 @@ const Profile = () => {
     const profileInputRef = useRef(null);
     const [profilePic, setProfilePic] = useState('');
     const [files, setFiles] = useState([]);
-
+    const navigate = useNavigate();
     useEffect(() => {
         if (user) {
             const filesRef = ref(storage, `user-files/${user.uid}/`);
@@ -65,11 +66,15 @@ const Profile = () => {
         return <div className="login-prompt">Please log in.</div>;
     }
 
+    const onLogoutSuccess = () => {
+        navigate('/'); // This will navigate to the home route
+    };
+
     return (
         <div className="profile-container">
             <nav className="profile-nav">
                 <a href="/" className="nav-item">Home</a>
-                <button onClick={handleLogout} className="nav-item logout-button">Logout</button>
+                <button onClick={() => handleLogout(onLogoutSuccess)} className="nav-item logout-button">Logout</button>
             </nav>
 
             <div className="profile-content">

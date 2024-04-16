@@ -27,6 +27,9 @@ const LogIn = () => {
             // Handle errors (e.g., user not found, wrong password)
         }
     };
+    const goBack = () => {
+        navigate(-1);
+    };
 
     return (
         <div className="login-container">
@@ -41,11 +44,14 @@ const LogIn = () => {
                 <input
                     type="password"
                     placeholder="Password"
-                    className="login-input"  
+                    className="login-input"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                 />
+                 <button onClick={goBack} className="back-button">Back</button>
                 <button type="submit" className="login-button">Log In</button>
+               
+
                 {/* Removed guest login for standard email/password flow */}
             </form>
         </div>

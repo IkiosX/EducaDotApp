@@ -26,10 +26,11 @@ export const subscribeToAuthChanges = (handleAuthChange) => {
 };
 
 // Function to log out the user
-export const handleLogout = async () => {
+export const handleLogout = async (onSuccess) => {
     try {
         await auth.signOut();
         console.log("User signed out.");
+        if (onSuccess) onSuccess();
     } catch (error) {
         console.error('Error signing out:', error);
     }
