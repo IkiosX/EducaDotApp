@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
-import './logIn.css';  // Assuming you're using the refactored CSS
+import './login/log-in_Page';  // Assuming you're using the refactored CSS
 
 const Register = () => {
     const [email, setEmail] = useState('');

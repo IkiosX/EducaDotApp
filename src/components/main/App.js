@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { subscribeToAuthChanges } from '../../services/sessionsStorage';
 import PrivateRoute from '../private_route/privateRoute';
 import HomePage from '../../views/homePage';
-import LogIn from '../../views/log-in_Page';
+import LogIn from '../../views/login/log-in_Page';
 import Register from '../../views/register';
 import Profile from '../../views/profile';
 
