@@ -1,4 +1,4 @@
-/* Assuming this is homePage.css */
+
 .home-page-container {
   display: flex;
   flex-direction: column;
@@ -15,16 +15,16 @@
   flex-direction: column;
 }
 
-/* Adjustments for tablet devices */
+
 @media (max-width: 768px) {
   .home-page-container {
-      /* You might want to adjust padding or margins, if necessary */
+      
   }
 
   .home-main-content {
-      /* Ensure content is centered and accessible; potentially adjust padding */
+     
       padding: 20px;
-      box-sizing: border-box; /* To include padding in the width calculation */
+      box-sizing: border-box; 
   }
 }
 
