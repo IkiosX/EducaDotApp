@@ -8,7 +8,7 @@ const SideChat = () => {
     const [messages, setMessages] = useState([]);
     const [newMessage, setNewMessage] = useState('');
 
-    // Assuming these are the UIDs of the two users chatting
+    
     const userOne = "alwhe6fQ9lfjeVo6a0qBlCnyl5u1";
     const userTwo = "wElIX6tKWKNfKjrjdhJdh7cP9GE3";
     const chatRoomId = [userOne, userTwo].sort().join('_');
@@ -28,7 +28,7 @@ const SideChat = () => {
 
         // Clean up the subscription on unmount
         return () => unsubscribe();
-    }, [chatRoomId]); // Empty dependency array means this effect runs once on mount
+    }, [chatRoomId]); // Empty dependency array this effect runs once
 
     const toggleChat = () => setIsExpanded(!isExpanded);
 
