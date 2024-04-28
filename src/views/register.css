@@ -1,20 +1,20 @@
 /* Register.css */
 .register-container {
-    background-color: #f3f4f6; /* Same background color as login */
-    color: #333; /* Same text color as login */
-    /* Additional styling */
+    background-color: #f3f4f6; 
+    color: #333; 
+   
 }
 
 .register-form {
-    /* Adapt or reuse form specific styling from login */
+    
 }
 
 .register-input {
-    /* Adapt or reuse input field styling from login */
+    
 }
 
 .register-button {
     background-color: #4a67ff; /* Same button color as login */
     color: white;
-    /* Additional button styling */
+    
 }
